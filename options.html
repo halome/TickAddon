@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tick Quick Entries – settings</title>
+  <link rel="stylesheet" href="popup.css">
+  <style>
+    body { width: auto; max-width: 460px; margin: 24px auto; }
+    fieldset { border: 1px solid var(--border); border-radius: 6px; margin: 12px 0; padding: 10px 12px; }
+    legend { font-weight: 600; }
+    button.primary { margin-top: 10px; }
+    #status { margin-top: 12px; }
+    #status.connected { color: var(--accent); font-weight: 600; }
+    .notice { padding: 8px 10px; border-radius: 4px; border-left: 4px solid; }
+    .notice.success { background: var(--accent-soft); border-color: var(--accent); color: #1b5e20; font-weight: 600; }
+    .notice.error { background: #fdecea; border-color: var(--error); color: var(--error); }
+    .notice.info { background: #f3f3f3; border-color: var(--border); color: #444; }
+  </style>
+</head>
+<body>
+  <h1>Tick – account connection <small id="version" class="muted"></small></h1>
+  <p id="status" class="muted"></p>
+
+  <fieldset>
+    <legend>API token</legend>
+    <p class="muted">You'll find your Subscription ID and token in Tick on the <b>Edit profile</b> page.</p>
+    <label>Subscription ID <input id="sub-id" inputmode="numeric"></label>
+    <label>API token <input id="token"></label>
+    <label>Tick account email (Tick requires it in the User-Agent header)
+      <input id="email" type="email" autocomplete="username">
+    </label>
+    <button id="save-manual" class="primary">Save</button>
+  </fieldset>
+
+  <p id="message" role="status"></p>
+
+  <fieldset>
+    <legend>Alternatively: email and password</legend>
+    <p class="muted">Only for accounts with a Tick password (doesn't work with Google sign-in). The password is used once to fetch the token and is not stored.</p>
+    <label>Password <input id="password" type="password" autocomplete="current-password"></label>
+    <label id="role-wrap" hidden>Company <select id="role"></select></label>
+    <button id="login" class="primary">Fetch token</button>
+  </fieldset>
+
+  <button id="logout">Disconnect account</button>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+:root {
+  --accent: #2f7d32;
+  --accent-soft: #e3f1e4;
+  --border: #d6d6d6;
+  --muted: #777;
+  --error: #c62828;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 360px;
+  margin: 0;
+  padding: 12px;
+  font: 13px/1.4 system-ui, sans-serif;
+  color: #222;
+  background: #fff;
+}
+
+header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+h1 { font-size: 15px; margin: 0; }
+
+button {
+  font: inherit;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+button:disabled { opacity: .5; cursor: default; }
+button.icon { border: none; background: none; font-size: 16px; padding: 2px 6px; }
+button.primary { width: 100%; padding: 8px; background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+
+label { display: block; margin-top: 8px; font-weight: 600; }
+input, select, textarea {
+  display: block;
+  width: 100%;
+  margin-top: 3px;
+  padding: 4px 6px;
+  font: inherit;
+  font-weight: normal;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+#project-filter { margin-bottom: 3px; }
+.row { display: flex; gap: 8px; }
+.row label { flex: 1; }
+#submit { margin-top: 12px; }
+
+.cal-nav { display: flex; align-items: center; justify-content: space-between; }
+.weekdays, .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; text-align: center; }
+.weekdays { margin: 4px 0 2px; color: var(--muted); font-size: 11px; }
+
+.day {
+  height: 38px;
+  padding: 2px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.day.weekend { background: #f3f3f3; color: var(--muted); }
+.day.today .num { text-decoration: underline; }
+.day.has-hours { border-color: #9cc59e; }
+.day.selected { background: var(--accent); border-color: var(--accent); color: #fff; }
+.day .hours { font-size: 10px; color: var(--accent); }
+.day.selected .hours { color: #dff0df; }
+
+.cal-actions { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
+.cal-actions .muted { margin-left: auto; }
+.muted { color: var(--muted); }
+.error { color: var(--error); white-space: pre-wrap; }
+
+#results { list-style: none; padding: 0; margin: 6px 0 0; max-height: 140px; overflow: auto; }
+#results li { padding: 2px 0; }
+#results li.ok::before { content: '✓ '; color: var(--accent); }
+#results li.fail { color: var(--error); }
+#results li.fail::before { content: '✗ '; }

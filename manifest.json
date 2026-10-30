@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Tick Quick Entries",
+  "version": "0.1.5",
+  "description": "Logs hours to Tickspot for many days at once.",
+  "permissions": ["storage", "declarativeNetRequestWithHostAccess"],
+  "host_permissions": ["https://www.tickspot.com/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Tick Quick Entries",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html"
+}
